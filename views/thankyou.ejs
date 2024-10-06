@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <title>Baby's First Drum Machine</title>
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=M+PLUS+2:wght@100..900&display=swap');
+
+      html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #111;
+        color: #CCC;
+        font-family: "M PLUS 2", sans-serif;
+        font-size: 16px;
+        font-weight: normal;
+        line-height: 1.8;
+        letter-spacing: 0.2em;
+        text-align: center;
+        overflow: hidden;
+      }
+      #screen {
+        width: 100%;
+        height: 100%;
+        margin: 0 auto;
+        display: block;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        overflow: scroll;
+      }
+      .section {
+        margin-bottom: 50px;
+      }
+      .section.white {
+        background-color: #FFF;
+        color: #111;
+        padding: 50px 0;
+      }
+      .banner {
+        margin: 50px 0 0 0;
+        background-color: #9E005D;
+        padding: 20px;
+        color: #111;
+      }
+      .booth.banner {
+        background-color: #CCC;
+        max-height: 100vh;
+        margin-bottom: 0;
+      }
+      .youtube.banner {
+        background-color: #222222;
+        color: #888888;
+        max-height: 100vh;
+        margin-top: 0;
+      }
+      .youtube.banner iframe {
+        height: 315px;
+        width: 560px;
+        margin: 10px auto;
+        max-width: 90vw;
+        aspect-ratio: 16/9;
+        max-height: calc(90vw * 9/16);
+      }
+      .banner.ribon {
+        margin: 0;
+      }
+        .center {
+          margin: 0;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          pointer-events: none;
+        }
+        .images {
+            width: 100%;
+            height: auto;
+            display: block;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .images.numbers img {
+            width: 30px;
+            height: auto;
+            display: block;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin: 30px auto 20px auto;
+            margin-top: 60px;
+        }
+        .images img {
+            width: 200px;
+            height: auto;
+            display: block;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin: 0 auto;
+        }
+        .images.booth img {
+            max-width: 80%;
+            margin-top: 30px;
+            margin-bottom: 10px;
+            max-height: 80vh;
+            width: auto;
+        }
+        .images.logo img {
+            margin-top: 50px;
+        }
+        .images.about img {
+            margin: 20px auto;
+            width: 200px;
+            max-width: 60%;
+        }
+        .images.about img.pb-logo {
+            margin: 0 auto 10px auto;
+            width: 200px;
+        }
+        .images.about.pb-logo {
+          margin-bottom: 80px;
+        }
+        .text {
+            width: 60%;
+            min-width: 280px;
+            height: auto;
+            display: block;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin: 0 auto;
+        }
+        .text.about, .images.about {
+           letter-spacing: 0;
+           line-height: 1.8;
+        }
+        
+        h2 {
+            font-weight: 700;
+            margin: 0;
+            margin-bottom: 10px;
+            margin-top: 30px;
+        }
+        h3 {
+            font-weight: 700;
+            margin: 0;
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }
+        .banner h3 {
+            margin: 0 auto;
+            width: calc(100% - 40px);
+        }
+        .banner h3 span {
+            font-size: 0.7em;
+            font-weight: 300;
+        }
+        p {
+            font-weight: 300;
+            margin: 0;
+        }
+        p.works {
+            margin: 0;
+            margin-bottom: 10px;
+        }
+        a {
+            color: #998675;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 700;
+            position: relative;
+            margin: 0 auto;
+            width: fit-content;
+            cursor: pointer;
+        }
+        p a::after {
+            content: "";
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            left: 50%;
+            bottom: 2px;
+            transform: translateX(-50%);
+            background-color: #998675;
+        }
+        
+        a:hover {
+            opacity: 0.5;
+            transition-duration: 100ms;
+        }
+        .copyright {
+          width: calc(100% - 40px);
+          position: fixed;
+          bottom: 20px;
+          left: 20px;
+          display: flex;
+          justify-content:space-between;
+        }
+        .copyright p {
+          font-size: 10px;
+          font-style: italic;
+          color: #888;
+          text-shadow: #111 1px 1px 0;
+        }
+        @media (max-width: 768px) {
+          html,body {
+            font-size: 16px;
+            letter-spacing: 0em;
+          }
+          .images img {
+            width: 60%;
+          }
+          .text {
+            width: 90%;
+          }
+          .banner {
+            padding: 10px 0;
+            margin: 50px 0 0 0;
+          }
+          .banner h3 {
+            letter-spacing: 0;
+          }
+          .banner .text {
+            width: 100%;
+          }
+        }
+    </style>
+</head>
+<body>
+    <div id="screen">
+          <div class="section">
+            <div class="images logo">
+                <img src="./images/BFDM-logo.png" alt="Babys First Drum Machine Logo">
+            </div>
+          </div>
+          <div class="section banner">
+            <div class="text">
+                <h3>You are logged out. Thank you for playing BFDM!</h3>
+            </div>
+          </div>
+          <div class="section white">
+            <div class="text">
+              <h3>10分経過したため、ログアウトしました</h3>
+              <p>インスタレーションBFDMは、多くの方に体験していただくために、ユーザー数が5人を超えた場合、10分経過したユーザー様が自動的にログアウトします。再度遊びたい方はQRコードをスキャンしてご参加ください。本日はBFDMへのご参加ありがとうございました。</p>
+            </div>
+            <div class="images about">
+                <img src="./images/goat.svg" alt="PatternBased">
+            </div>
+          </div>
+          
+          <div class="section">
+            
+            <div class="images about pb-logo">
+              <a href="https://patternbased.com/" target="_blank">
+                <img class="pb-logo" src="./images/patternbased-logo.png" alt="PatternBased">
+              </a>
+          </div>
+          </div>
+          <div class="copyright">
+            <p>&copy; 2024 PatternBased</p>
+          </div>
+    </div>
+</body>
+</html>
+ギター

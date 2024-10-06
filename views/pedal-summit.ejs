@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+
+    <title>Baby's First Drum Machine</title>
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=M+PLUS+2:wght@100..900&display=swap');
+
+      html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #111;
+        color: #CCC;
+        font-family: "M PLUS 2", sans-serif;
+        font-size: 16px;
+        font-weight: normal;
+        line-height: 1.8;
+        letter-spacing: 0.2em;
+        text-align: center;
+        overflow: hidden;
+      }
+      #screen {
+        width: 100%;
+        height: 100%;
+        margin: 0 auto;
+        display: block;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        overflow: scroll;
+      }
+      .section {
+        margin-bottom: 50px;
+      }
+      .banner {
+        margin: 80px 0;
+        background-color: #9E005D;
+        padding: 20px;
+        color: #111;
+      }
+      .booth.banner {
+        background-color: #CCC;
+        max-height: 100vh;
+        margin-bottom: 0;
+      }
+      .youtube.banner {
+        background-color: #222222;
+        color: #888888;
+        max-height: 100vh;
+        margin-top: 0;
+      }
+      .youtube.banner iframe {
+        height: 315px;
+        width: 560px;
+        margin: 10px auto;
+        max-width: 90vw;
+        aspect-ratio: 16/9;
+        max-height: calc(90vw * 9/16);
+      }
+      .banner.ribon {
+        margin: 0;
+      }
+        .center {
+          margin: 0;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          pointer-events: none;
+        }
+        .images {
+            width: 100%;
+            height: auto;
+            display: block;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .images.numbers img {
+            width: 30px;
+            height: auto;
+            display: block;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin: 30px auto 20px auto;
+            margin-top: 60px;
+        }
+        .images img {
+            width: 50%;
+            height: auto;
+            display: block;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin: 0 auto;
+        }
+        .images.booth img {
+            max-width: 80%;
+            margin-top: 30px;
+            margin-bottom: 10px;
+            max-height: 80vh;
+            width: auto;
+        }
+        .images.logo img {
+            margin-top: 80px;
+        }
+        .images.about img {
+            margin: 20px auto;
+            width: 300px;
+        }
+        .images.about img.pb-logo {
+            margin: 0 auto 10px auto;
+            width: 200px;
+        }
+        .images.about.pb-logo {
+          margin-bottom: 80px;
+        }
+        .text {
+            width: 60%;
+            min-width: 280px;
+            height: auto;
+            display: block;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin: 0 auto;
+        }
+        .text.about, .images.about {
+           letter-spacing: 0;
+           line-height: 1.8;
+           margin-bottom: 40px;
+        }
+        
+        h2 {
+            font-weight: 700;
+            margin: 0;
+            margin-bottom: 10px;
+            margin-top: 30px;
+        }
+        h3 {
+            font-weight: 700;
+            margin: 0;
+            margin-bottom: 10px;
+            margin-top: 30px;
+        }
+        .banner h3 {
+            margin: 0;
+        }
+        .banner h3 span {
+            font-size: 0.7em;
+            font-weight: 200;
+        }
+        p {
+            font-weight: 200;
+            margin: 0;
+        }
+        p.works {
+            margin: 0;
+            margin-bottom: 10px;
+        }
+        a {
+            color: #998675;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 700;
+            position: relative;
+            margin: 0 auto;
+            width: fit-content;
+            cursor: pointer;
+        }
+        p a::after {
+            content: "";
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            left: 50%;
+            bottom: 2px;
+            transform: translateX(-50%);
+            background-color: #998675;
+        }
+        
+        a:hover {
+            opacity: 0.5;
+            transition-duration: 100ms;
+        }
+        .copyright {
+          width: calc(100% - 40px);
+          position: fixed;
+          bottom: 20px;
+          left: 20px;
+          display: flex;
+          justify-content:space-between;
+        }
+        .copyright p {
+          font-size: 10px;
+          font-style: italic;
+          color: #888;
+          text-shadow: #111 1px 1px 0;
+        }
+        @media (max-width: 768px) {
+          html,body {
+            font-size: 13px;
+            letter-spacing: 0em;
+          }
+          .images img {
+            width: 80%;
+          }
+          .text {
+            width: 90%;
+          }
+          .banner {
+            padding: 10px 0;
+            margin: 50px 0;
+          }
+          .banner h3 {
+            letter-spacing: 0;
+          }
+          .banner .text {
+            width: 100%;
+          }
+        }
+    </style>
+</head>
+<body>
+    <div id="screen">
+          <div class="section">
+            <div class="images logo">
+                <img src="./images/BFDM-logo.png" alt="Babys First Drum Machine Logo">
+            </div>
+            <div class="text">
+                <h2>at <a href="https://www.tokyopedalsummit.jp/" target="_blank">Tokyo Pedal Summit 2024</a></h2>
+                <p><b>10.26 sat // 11AM - 6PM<br/>10.27 sun // 10AM - 5PM</b><br/>
+                <a href="https://gotanda-hall.jp/" target="_blank">CITY HALL AND GALLERY GOTANDA</a><br/>〒141-0031 東京都品川区西五反田8-4-13<br/>五反田JPビルディング3階<br/>
+                <b>入場無料</b><br/></p>
+            </div>
+          </div>
+          <div class="section banner">
+            <div class="text">
+                <h3>作って遊べる、ドラムマシーン型３Ｄビジュアライザー</h3>
+            </div>
+          </div>
+          <div class="section">
+            <div class="images numbers">
+                <img src="./images/point-1.png" alt="Tokyo Pedal Summit 2024">
+            </div>
+            <div class="images">
+                <img src="./images/bfdm_point-12.gif" alt="Tokyo Pedal Summit 2024">
+            </div>
+            <div class="text">
+                <h3>携帯から楽しめる</h3>
+                <p>お手持ちの携帯からドラムマシーンを操作。<br/>ビートに対応したビジュアルがスクリーンに映ります。</p>
+            </div>
+          </div>
+          <div class="section">
+            <div class="images numbers">
+                <img src="./images/point-2.png" alt="Tokyo Pedal Summit 2024">
+            </div>
+            <div class="images">
+                <img src="./images/bfdm_point-2.gif" alt="Tokyo Pedal Summit 2024">
+            </div>
+            <div class="text">
+                <h3>アニメーションがギターに反応</h3>
+                <p>好きなペダルを使ってギターをプレイ。<br/>オーディオに反応した映像がスクリーンに映ります。</p>
+            </div>
+          </div>
+          <div class="section">
+            <div class="images numbers">
+                <img src="./images/point-3.png" alt="Tokyo Pedal Summit 2024">
+            </div>
+            <div class="images">
+                <img src="./images/bfdm_point-41.gif" alt="Tokyo Pedal Summit 2024">
+            </div>
+            <div class="text">
+                <h3>オリジナルビデオとして録音録画</h3>
+                <p>録画ボタンを押すと１５秒のレコーディングがスタート。<br/>アニメーションとサウンドが録音録画されます。</p>
+            </div>
+          </div>
+          <div class="section">
+            <div class="images numbers">
+                <img src="./images/point-4.png" alt="Tokyo Pedal Summit 2024">
+            </div>
+            <div class="images">
+                <img src="./images/bfdm_point-52.gif" alt="Tokyo Pedal Summit 2024">
+            </div>
+            <div class="text">
+                <h3>Tokyo Pedal Summitのお土産に</h3>
+                <p>ビデオをダウンロード出来るQRコードをお渡しします。<br/>ソーシャルメディアで共有しましょう。</p>
+            </div>
+          </div>
+
+          <!-- <div class="section">
+            <div class="images">
+                <img src="./images/bfdm_point-3.gif" alt="Tokyo Pedal Summit 2024">
+            </div>
+            <div class="text">
+                <h3>推しのギアをスクリーンに</h3>
+                <p>お手持ちのペダル、ギア、パーツなどを、<br/>3Dスキャンして、ビジュアルとして取り込みます。<br/>（取込作業に１時間程度かかります）</p>
+            </div>
+          </div> -->
+          
+          <div class="section banner booth">
+            <div class="text">
+                <h3>ブース設置案 <span>(クリックで拡大)</span></h3>
+            </div>
+            <div class="images booth">
+              <a href="./images/set-up-2.png" target="_blank"><img src="./images/set-up-2.png" alt=""></a>
+            </div>
+          </div>
+          <div class="section banner ribon">
+            <div class="text">
+                <h3>インスタレーションは無料でお楽しみいただけます。</h3>
+            </div>
+          </div>
+          <div class="section banner youtube">
+            <div class="text">
+              <h3>デモビデオ</h3>
+            </div>
+            <iframe width="560" height="350" src="https://www.youtube.com/embed/lbJlNiiQLiU?si=_TTyp5R5Z59PgHE6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+          <!-- <div class="section banner booth">
+            <div class="text">
+                <h3>他にも遊び方いろいろ</h3>
+                <p class="works"><b>推しのギアをスクリーンに</b> お手持ちのペダル、ギア、パーツなどを、<br/>3Dスキャンして、ビジュアルとして取り込みます。<br/>（取込作業に１時間程度かかります）</p>
+            </div>
+          </div> -->
+          <div class="section">
+            <div class="images about">
+                <img src="./images/about.png" alt="Tokyo Pedal Summit 2024">
+            </div>
+            <div class="text about">
+                <p>PatternBasedはメディアアートを制作します。特にインタラクティブとオーディオ・ビジュアルの共体験を得意としています。1990年代レコードレーベルとしてアメリカ・オハイオ州で設立、2015年からカリフォルニア・モハビ砂漠でマルチメディアアート制作、2022年3月から長崎県日見を拠点にしています。</p>
+
+                <h3>// 主な作品 //</h3>
+                    <p class="works"><b>ウェブアプリ</b> <a href="https://onomatopedal.com/" target="_blank">OnomatoPedal</a><br/>
+                    サンプルドラムパッドで遊ぶ、オンライン音楽プレイグラウンド</p>
+                    <p class="works"><b>インスタレーション</b> <a href="https://patternbased.com/jp/portfolio/synaesthesia" target="_blank">Synaesthesia</a><br/>
+                    動きが音になり、演奏が模様になる、共感覚的な音楽体験</p>
+                    <p class="works"><b>インフォグラフィック</b> <a href="https://heartbeats.patternbased.com/" target="_blank">Heartbeats.</a><br/>
+                    動物たちの心臓の鼓動を見て聞いて学ぶ、インタラクティブなインフォグラフィック</p>
+                    <p class="works"><b>インスタレーション <a href="https://youtu.be/ooI79IBtIhk?si=msgwSpT0albwHbBP" target="_blank">Be: /Prompt</a></b><br/>
+                      リアルタイムAI画像生成で、プロンプトに「なる」擬態体験</p>
+            </div>
+            <div class="images about pb-logo">
+              <a href="https://patternbased.com/" target="_blank">
+                <img class="pb-logo" src="./images/patternbased-logo.png" alt="PatternBased">
+              </a>
+              <p><a href="https://patternbased.com/" target="_blank">PatternBased.com</a> // 公式ウェブサイト</p>
+              <p><a href="https://siori.patternbased.com/" target="_blank">北島志織</a> (日本語) // メディアアーティスト・ディレクター</p>
+              <p><a href="https://joey.patternbased.com/" target="_blank">Joseph Minadeo</a> (English) // 作曲家・プロデューサー</p>
+          </div>
+          </div>
+          <div class="copyright">
+            <p>&copy; 2024 PatternBased</p>
+            <p>CONFIDENTIAL</p>
+          </div>
+    </div>
+</body>
+</html>
+ギター

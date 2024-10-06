@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>QR Code Display</title>
+</head>
+<body>
+  <div id="content"></div>
+
+  <script>
+    const socket = new WebSocket('wss://drum.patternbased.com/ws');
+
+    socket.onopen = function() {
+      console.log('WebSocket connection established');
+    };
+
+    socket.onmessage = function(event) {
+      const message = event.data;
+      if(message == 'ping') {
+        console.log('Ping received');
+      } else if (message.includes('png:')) {
+        console.log('Png received');
+        let trimmed1 = message.substring(4)
+        document.getElementById('content').innerHTML = trimmed1;
+        setTimeout(() => {
+          w=window.open();
+          w.document.write(document.getElementById('content').innerHTML);
+          w.print();
+          w.close();
+        }, 2000)
+      } else if (message.includes('waiting:')) {
+        let trimmed2 = message.substring(8)
+        document.getElementById('content').innerHTML = trimmed2
+      } else {
+        console.log('Message received:', message);
+      }
+    };
+
+    socket.onclose = function() {
+      console.log('WebSocket connection closed');
+    };
+
+    socket.onerror = function(error) {
+      console.error('WebSocket error:', error);
+    };
+  </script>
+</body>
+</html>
